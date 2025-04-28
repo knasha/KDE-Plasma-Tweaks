@@ -12,7 +12,7 @@ echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode
 This tweak enables loudness equalization on Linux which is inexplicably missing on most if not all distros I have tested.
 
 - Download `LoudnessEqualizer.json` config file from: https://github.com/Digitalone1/EasyEffects-Presets
-- Launch Easy Effects (This creats config folders)
+- Install and then launch `Easy Effects` (This creats config folders)
 - Paste json file in `~/.config/easyeffects/output` folder
 - In Easy Effects, click `Presets` on top left.
 - Select the config, and press Load
@@ -22,3 +22,4 @@ This tweak enables loudness equalization on Linux which is inexplicably missing 
 - Click `Presets` and save changes
 - Click `Preferences` by clicking the menu on top right
 - Enable `Launch Service at System Startup`
+- Close Easy Effects
