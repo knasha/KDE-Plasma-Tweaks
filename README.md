@@ -4,7 +4,10 @@ This document covers some tweaks I have to make usually when setting up a new KD
 ## Epomaker Keyboard Tweaks - Enable Function Keys
 This tweak disables "Mac" mode on Epomaker keyboards and forces Windows mode, which enables the function keys. Otherwise, the function keys behave like multimedia keys, which is annoying.
 ```bash
-echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode
+echo "options hid_apple fnmode=2" | sudo tee /etc/modprobe.d/hid_apple.conf
+echo 'install_items+=/etc/modprobe.d/hid_apple.conf' | sudo tee /etc/dracut.conf.d/hid_apple.conf
+sudo dracut --force
+sudo reboot
 ```
 
 ## Easy Effects - Loudness Equalization on Linux
