@@ -26,3 +26,16 @@ This tweak enables loudness equalization on Linux which is inexplicably missing 
 - Click `Preferences` by clicking the menu on top right
 - Enable `Launch Service at System Startup`
 - Close Easy Effects
+
+## Docker and QEMU don't work well together
+
+THis tweak fixes NAT related issues with QEMU if Docker is also installed on the same machine.
+
+```bash
+sudo vim /etc/libvirt/network.conf
+```
+
+Find and uncomment (or add) this line:
+```
+firewall_backend = "iptables"
+```
