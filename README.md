@@ -29,7 +29,7 @@ This tweak enables loudness equalization on Linux which is inexplicably missing 
 
 ## Docker and QEMU don't work well together
 
-THis tweak fixes NAT related issues with QEMU if Docker is also installed on the same machine.
+This tweak fixes NAT related issues with QEMU if Docker is also installed on the same machine.
 
 ```bash
 sudo vim /etc/libvirt/network.conf
@@ -38,4 +38,13 @@ sudo vim /etc/libvirt/network.conf
 Find and uncomment (or add) this line:
 ```
 firewall_backend = "iptables"
+```
+
+## Bluetooth Audio Stutter Fix
+
+ERTM causes retransmission storms that starve A2DP. 
+
+```bash
+echo "options bluetooth disable_ertm=1" | sudo tee /etc/modprobe.d/bluetooth.conf
+sudo reboot
 ```
