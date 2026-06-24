@@ -48,3 +48,17 @@ ERTM causes retransmission storms that starve A2DP.
 echo "options bluetooth disable_ertm=1" | sudo tee /etc/modprobe.d/bluetooth.conf
 sudo reboot
 ```
+## Bluetooth Headset not becoming default
+Recent updates to plasma (6.7.0) has caused this bug where if a bluetooth audio device is connected, the volume knob on the keyboard no longer controls it. This is because the previous device is still set as default. The following config file fixes this.
+
+```bash
+mkdir -p ~/.config/wireplumber/wireplumber.conf.d
+vim ~/.config/wireplumber/wireplumber.conf.d/90-autoswitch.conf
+```
+Place the following text in this config file
+```
+wireplumber.settings = {
+  device.restore-routes = false
+}
+```
+Disconnect and reconnect the bluetooth device to test.
