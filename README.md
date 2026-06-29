@@ -62,3 +62,36 @@ wireplumber.settings = {
 }
 ```
 Disconnect and reconnect the bluetooth device to test.
+
+## Audio not working on Artix Linux (dinit)
+
+Install required packages
+
+```bash
+sudo pacman -S turnstile turnstile-dinit
+sudo dinitctl enable turnstiled
+
+sudo reboot
+
+sudo pacman -R pulseaudio-bluetooth pulseaudio-zeroconf
+sudo pacman -S pipewire pipewire-jack pipewire-pulse wireplumber pipewire-dinit pipewire-jack-dinit pipewire-pulse-dinit wireplumber-dinit
+
+
+sudo dinitctl enable pipewire
+dinitctl enable pipewire
+sudo dinitctl enable wireplumber
+dinitctl enable wireplumber
+sudo dinitctl enable pipewire-pulse
+dinitctl enable pipewire-pulse
+
+
+sudo reboot
+
+```
+
+If your machine uses Intel SOF (Sound Open Firmware) you also need these:
+
+```bash
+sudo pacman -S sof-firmware alsa-utils alsa-ucm-conf
+sudo reboot
+```
