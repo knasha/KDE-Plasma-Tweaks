@@ -95,3 +95,17 @@ If your machine uses Intel SOF (Sound Open Firmware) you also need these:
 sudo pacman -S sof-firmware alsa-utils alsa-ucm-conf
 sudo reboot
 ```
+
+## Setup Qemu on Artix Linux (dinit)
+
+```bash
+sudo pacman -S qemu-full virt-manager virt-viewer libvirt dnsmasq ebtables iptables-nft
+sudo pacman -S libvirt-dinit qemu-guest-agent-dinit
+
+sudo dinitctl enable libvirtd
+sudo dinitctl start libvirtd
+
+sudo usermod -aG libvirt,kvm $(whoami)
+
+newgrp libvirt
+```
